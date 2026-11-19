@@ -21,12 +21,14 @@ jobs:
 
       - name: Gradle Kurulumu ve APK Derleme
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
       - name: APK Oluştur
         run: gradle assembleDebug
 
-      - name: Oluşan APK Dosyasını Yükle
+      - name: APK Dosyasını Yükle
         uses: actions/upload-artifact@v4
         with:
           name: VideoSil-AI-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
